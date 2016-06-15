@@ -20,6 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+#import <Foundation/Foundation.h>
+
 /** Weakify & Strongify */
 #define od_weakify(obj)     __weak __typeof(obj) self_weak_ = obj;
 #define od_strongify(obj)   _Pragma("clang diagnostic push")                    \
