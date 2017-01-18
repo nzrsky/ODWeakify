@@ -1,0 +1,18 @@
+language: objective-c
+osx_image: xcode8
+before_install:
+  # Force bundler 1.12.5 because version 1.13 has issues, see https://github.com/fastlane/fastlane/issues/6065#issuecomment-246044617
+  # - gem uninstall bundler -v '>1.12.5' --force || echo "bundler >1.12.5 is not installed"
+  # - gem install bundler -v 1.12.5 --no-rdoc --no-ri --no-document --quiet
+  - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
+  - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
+  - cd Example && pod install && cd -
+script:
+  - xcodebuild -workspace Example/Example.xcworkspace -scheme App -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.2' clean test | xcpretty
+  - xcodebuild -workspace Example/Example.xcworkspace -scheme App -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.3' clean test | xcpretty
+after_failure:
+ - cat -n ~/Library/Logs/scan/*
+ - cat -n $TMPDIR/com.apple.dt.XCTest-status/Session*.log
+ - cat -n ~/Library/Logs/DiagnosticReports/xctest*.crash
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

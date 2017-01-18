@@ -1,8 +1,12 @@
 # ODWeakify
 
-[![Version](https://img.shields.io/cocoapods/v/ODWeakify.svg?style=flat)](http://cocoapods.org/pods/ODWeakify)
-[![License](https://img.shields.io/cocoapods/l/ODWeakify.svg?style=flat)](http://cocoapods.org/pods/ODWeakify)
-[![Platform](https://img.shields.io/cocoapods/p/ODWeakify.svg?style=flat)](http://cocoapods.org/pods/ODWeakify)
+[![Build Status](https://travis-ci.org/Rogaven/ODWeakify.svg?branch=master)](https://travis-ci.org/Rogaven/ODWeakify)
+[![codecov.io](https://codecov.io/github/Rogaven/ODWeakify/coverage.svg?branch=master)](https://codecov.io/github/Rogaven/ODWeakify?branch=master)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/ODWeakify.svg)](https://img.shields.io/cocoapods/v/ODWeakify.svg)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Platform](https://img.shields.io/cocoapods/p/ODWeakify.svg?style=flat)](http://cocoadocs.org/docsets/ODWeakify)
+[![Twitter](https://img.shields.io/badge/twitter-@nazarff-blue.svg?style=flat)](http://twitter.com/nazarff)
+
 
 ## Usage
 
@@ -41,13 +45,54 @@ Now all `self`s inside block will be in safe from retain cycles.
 And if you forget strongify (and won't use self_weak_) you'll get a warning. 
 
 ## Installation
+ODWeakify supports multiple methods for installing the library in a project.
 
-ODWeakify is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+## Installation with CocoaPods
+
+[CocoaPods](http://cocoapods.org) is a dependency manager for Objective-C and Swift, which automates and simplifies the process of using 3rd-party libraries like ODWeakify in your projects. You can install it with the following command:
+
+```bash
+$ gem install cocoapods
+```
+
+#### Podfile
+
+To integrate ODWeakify into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+
+target 'TargetName' do
 pod 'ODWeakify'
+end
 ```
+
+Then, run the following command:
+
+```bash
+$ pod install
+```
+
+### Installation with Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
+
+You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate ODWeakify into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "Rogaven/ODWeakify" ~> 1.1
+```
+
+Run `carthage` to build the framework and drag the built `ODWeakify.framework` into your Xcode project.
+
 
 ## Author
 
