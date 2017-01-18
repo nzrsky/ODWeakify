@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'ODWeakify'
-  s.version      = '1.1.0'
+  s.version      = '1.1.1'
   s.summary      = 'Weakify and strongify wrappers for ObjC'
   s.homepage     = 'https://github.com/Rogaven/ODWeakify'
   s.license      = { :type => 'MIT', :file => 'LICENSE.txt' }
