@@ -1,0 +1,9 @@
+use_frameworks!
+
+target 'App' do
+  pod 'ODWeakify', :path => '../'
+end
+
+target 'Tests' do
+    pod 'ODWeakify', :path => '../'
+end

@@ -1,0 +1,19 @@
+PODS:
+  - ODStringify (1.1.0)
+  - ODWeakify (1.1.0):
+    - ODStringify
+
+DEPENDENCIES:
+  - ODWeakify (from `../`)
+
+EXTERNAL SOURCES:
+  ODWeakify:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ODStringify: bc8de7f2f0ca538b5ae1575126e3eeafde05218c
+  ODWeakify: 75dd874604c28b5e7ff550852c3579bbce45b6b8
+
+PODFILE CHECKSUM: 3d919e97676cc7f902e84c6eace9b603bc4033dc
+
+COCOAPODS: 1.1.1
