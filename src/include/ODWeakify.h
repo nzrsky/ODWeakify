@@ -21,10 +21,31 @@
 // THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
+#import <ODStringify.h>
 
-/** Weakify & Strongify */
-#define od_weakify(obj)     __weak __typeof(obj) self_weak_ = obj;
+/** Weakify any variable
+ * After weakify you can use it as weak var with name $(var)_weak_ 
+ * or make od_strongify and use it as usual
+ * @code
+ od_weakify(self)
+ self.block = ^{
+    self_weak_.val = something
+    ...
+ }
+ * @endcode
+ */
+#define od_weakify(obj)     __weak __typeof(obj) ODConcat(obj, _weak_) = obj;
+
+/** Strongify any variable
+ * @code
+ od_weakify(self)
+ self.block = ^{
+    od_strongify(self)
+    self.val = something
+ }
+ * @endcode
+ */
 #define od_strongify(obj)   _Pragma("clang diagnostic push")                    \
                             _Pragma("clang diagnostic ignored \"-Wshadow\"")    \
-                            __strong __typeof(obj) obj = self_weak_;            \
+                            __strong __typeof(obj) obj = ODConcat(obj, _weak_); \
                             _Pragma("clang diagnostic pop")
