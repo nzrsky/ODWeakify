@@ -7,7 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "ODXCore.h"
+#import <ODWeakify.h>
 
 @interface ODWeakify_Test : XCTestCase
 @end
@@ -20,6 +20,10 @@
     XCTAssert(self_weak_);
     XCTAssert(self_weak_ == self);
     XCTAssert(&self_weak_ != &self);
+
+    NSObject *obj = [NSObject new];
+    od_weakify(obj);
+    XCTAssert(obj_weak_);
 }
 
 - (void)testStrongify {
@@ -35,6 +39,13 @@
         XCTAssert(&orig != &self);
     } while(0);
 
+    NSObject *obj = [NSObject new];
+    od_weakify(obj);
+
+    {
+        od_strongify(obj);
+        XCTAssert(obj);
+    }
 }
 
 @end
