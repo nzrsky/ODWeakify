@@ -8,8 +8,8 @@ before_install:
   - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
   - cd Example && pod install && cd -
 script:
-  - xcodebuild -workspace Example/Example.xcworkspace -scheme App -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.2' clean test | xcpretty
-  - xcodebuild -workspace Example/Example.xcworkspace -scheme App -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.3' clean test | xcpretty
+  - xcodebuild -workspace Example/Example.xcworkspace -scheme App -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.0' OTHERCFLAGS="-fprofile-arcs -ftest-coverage" clean test | xcpretty
+  - xcodebuild -workspace Example/Example.xcworkspace -scheme App -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.3' OTHERCFLAGS="-fprofile-arcs -ftest-coverage" clean test | xcpretty
 after_failure:
  - cat -n ~/Library/Logs/scan/*
  - cat -n $TMPDIR/com.apple.dt.XCTest-status/Session*.log

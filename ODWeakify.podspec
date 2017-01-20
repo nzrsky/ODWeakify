@@ -1,12 +1,13 @@
 Pod::Spec.new do |s|
   s.name         = 'ODWeakify'
-  s.version      = '1.1.2'
+  s.version      = '1.1.3'
   s.summary      = 'Weakify and strongify wrappers for ObjC'
   s.homepage     = 'https://github.com/Rogaven/ODWeakify'
   s.license      = { :type => 'MIT', :file => 'LICENSE.txt' }
   s.author       = { 'Alexey Nazaroff' => 'alexx.nazaroff@gmail.com' }
   s.source       = { :git => 'https://github.com/Rogaven/ODWeakify.git', :tag => s.version.to_s }
-  
+  s.social_media_url = 'https://twitter.com/nazarff'
+
   s.ios.deployment_target = '5.0'
   s.osx.deployment_target = '10.6'
   s.watchos.deployment_target = '1.0'
