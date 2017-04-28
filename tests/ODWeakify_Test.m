@@ -29,14 +29,14 @@
 - (void)testStrongify {
     od_weakify(self);
 
-    __strong ODWeakify_Test **orig = &self;
+    __strong ODWeakify_Test * const *orig = &self;
     do {
         od_strongify(self);
         XCTAssert(self);
         XCTAssert(orig);
 
         XCTAssert(*orig == self);
-        XCTAssert(&orig != &self);
+        XCTAssert(orig != &self);
     } while(0);
 
     NSObject *obj = [NSObject new];
@@ -46,6 +46,16 @@
         od_strongify(obj);
         XCTAssert(obj);
     }
+}
+
+- (void)testBlockWeak {
+    void (^block)() = block_weak(self, {
+        XCTAssert(self);
+        XCTAssert(self_weak_);
+        XCTAssert(self_weak_ == self);
+        XCTAssert(&self_weak_ != &self);
+    });
+    block();
 }
 
 @end

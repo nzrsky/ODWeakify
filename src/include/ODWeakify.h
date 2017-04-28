@@ -49,3 +49,14 @@
                             _Pragma("clang diagnostic ignored \"-Wshadow\"")    \
                             __strong __typeof(obj) obj = ODConcat(obj, _weak_); \
                             _Pragma("clang diagnostic pop")
+
+/** Returns block with weak variable for this block
+ * It has similar behavior like Swift's closure { [weak var] ... }
+ * @code
+ block_weak(self, {
+    self.val = something
+    ...
+ }
+ * @endcode
+ */
+#define block_weak(var, code) ({ od_weakify(var); ^{ od_strongify(self); (code); }; })
