@@ -1,19 +1,23 @@
 PODS:
-  - ODStringify (1.1.0)
-  - ODWeakify (1.1.4):
-    - ODStringify
+  - ODStringify (1.1.5)
+  - ODWeakify (1.1.5):
+    - ODStringify (~> 1.1.5)
 
 DEPENDENCIES:
   - ODWeakify (from `../`)
+
+SPEC REPOS:
+  trunk:
+    - ODStringify
 
 EXTERNAL SOURCES:
   ODWeakify:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ODStringify: bc8de7f2f0ca538b5ae1575126e3eeafde05218c
-  ODWeakify: f25555585baa0061326c85729046de1fd79e0f1a
+  ODStringify: f7285e58e01abc36c0cd5d80c89a434dd3c70c2d
+  ODWeakify: 38b40ce7c8c45ae67c04ace98b43a941fe8ea41c
 
 PODFILE CHECKSUM: 3d919e97676cc7f902e84c6eace9b603bc4033dc
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.11.3

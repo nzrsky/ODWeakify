@@ -1,13 +1,9 @@
 //
-//  ODPath_Test.m
-//  ODXCore
-//
-//  Created by Alex Nazaroff on 15.06.16.
-//  Copyright © 2016 AJR. All rights reserved.
+//  Copyright © 2015-2022 Alexey Nazarov. All rights reserved.
 //
 
-#import <XCTest/XCTest.h>
-#import <ODWeakify.h>
+@import XCTest;
+@import ODWeakify;
 
 @interface ODWeakify_Test : XCTestCase
 @end

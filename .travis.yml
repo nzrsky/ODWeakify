@@ -1,18 +1,19 @@
+# references:
+# * https://www.objc.io/issues/6-build-tools/travis-ci/
+# * https://github.com/supermarin/xcpretty#usage
+
+osx_image: xcode13.4
 language: objective-c
-osx_image: xcode8
+cache: cocoapods
+podfile: Example/Podfile
+xcode_workspace: Example/Example.xcworkspace
+xcode_scheme: ODWeakify
+xcode_destination: platform=iOS Simulator,OS=15.5,name=iPhone 13 
 before_install:
-  # Force bundler 1.12.5 because version 1.13 has issues, see https://github.com/fastlane/fastlane/issues/6065#issuecomment-246044617
-  # - gem uninstall bundler -v '>1.12.5' --force || echo "bundler >1.12.5 is not installed"
-  # - gem install bundler -v 1.12.5 --no-rdoc --no-ri --no-document --quiet
-  - gem install cocoapods --no-rdoc --no-ri --no-document --quiet
-  - gem install xcpretty --no-rdoc --no-ri --no-document --quiet
-  - cd Example && pod install && cd -
+- gem install cocoapods xcpretty # Since Travis is not always on latest version
+- pod install --project-directory=Example
 script:
-  - xcodebuild -workspace Example/Example.xcworkspace -scheme App -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.0' OTHERCFLAGS="-fprofile-arcs -ftest-coverage" clean test | xcpretty
-  - xcodebuild -workspace Example/Example.xcworkspace -scheme App -destination 'platform=iOS Simulator,name=iPhone 6,OS=9.3' OTHERCFLAGS="-fprofile-arcs -ftest-coverage" clean test | xcpretty
-after_failure:
- - cat -n ~/Library/Logs/scan/*
- - cat -n $TMPDIR/com.apple.dt.XCTest-status/Session*.log
- - cat -n ~/Library/Logs/DiagnosticReports/xctest*.crash
+- set -o pipefail && xcodebuild  -enableCodeCoverage YES -workspace Example/Example.xcworkspace -scheme Example -sdk iphonesimulator15.5 -destination 'platform=iOS Simulator,OS=15.5,name=iPhone 13' ONLY_ACTIVE_ARCH=NO GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES test | xcpretty
+- pod lib lint
 after_success:
   - bash <(curl -s https://codecov.io/bash)

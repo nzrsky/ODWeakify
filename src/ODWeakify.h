@@ -1,6 +1,6 @@
 // ODWeakify.h
 //
-// Copyright (c) 2009-2015 Alexey Nazaroff, AJR
+// Copyright (c) 2015-2022 Alexey Nazarov
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -20,8 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
-#import <ODStringify.h>
+@import Foundation;
+@import ODStringify;
 
 /** Weakify any variable
  * After weakify you can use it as weak var with name $(var)_weak_ 
