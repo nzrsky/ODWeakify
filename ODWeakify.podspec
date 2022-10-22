@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'ODWeakify'
-  s.version      = '1.1.5'
+  s.version      = '1.1.6'
   s.summary      = 'Weakify and strongify wrappers for ObjC'
   s.homepage     = 'https://github.com/nzrsky/ODWeakify'
   s.license      = { :type => 'MIT', :file => 'LICENSE.txt' }
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
   s.frameworks    = 'Foundation'  
   s.source_files = 'src/**/*.{h,m}'
 
-  s.dependency 'ODStringify', '~> 1.1.5'
+  s.dependency 'ODStringify', '>= 1.1.5'
   
   pch_TARGETS = <<-EOS
 #ifndef TARGET_OS_IOS
